@@ -13,7 +13,6 @@ object frmPrincipal: TfrmPrincipal
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -680,7 +679,7 @@ object frmPrincipal: TfrmPrincipal
       849752BE88594DA85ECD66AC24103CECD10600E0ED2719193CFB9A28A8ABB47D
       4A8F5F40A28A2AC90A28A2803FFFD9}
   end
-  object btnEditar: TPanel
+  object TPanel: TPanel
     Left = 0
     Top = 0
     Width = 97
@@ -693,22 +692,25 @@ object frmPrincipal: TfrmPrincipal
       Height = 25
       Caption = 'Imprimir'
       TabOrder = 0
+      OnClick = btnImprimirClick
     end
-    object Button2: TButton
+    object btnSalvar: TButton
       Left = 14
       Top = 63
       Width = 59
       Height = 25
       Caption = 'Salvar'
       TabOrder = 1
+      OnClick = btnSalvarClick
     end
-    object Button3: TButton
+    object btnEditar: TButton
       Left = 14
       Top = 94
       Width = 59
       Height = 25
       Caption = 'Editar'
       TabOrder = 2
+      OnClick = btnEditarClick
     end
   end
   object StatusBar1: TStatusBar
@@ -740,6 +742,7 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Cadastro'
       object Produtos1: TMenuItem
         Caption = 'Produtos'
+        OnClick = Produtos1Click
       end
       object Produtos2: TMenuItem
         Caption = 'Usu'#225'rios'
@@ -747,6 +750,7 @@ object frmPrincipal: TfrmPrincipal
     end
     object Sair1: TMenuItem
       Caption = 'Sair'
+      OnClick = Sair1Click
     end
   end
   object Timer1: TTimer

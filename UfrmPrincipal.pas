@@ -19,18 +19,23 @@ type
     Editar2: TMenuItem;
     N1: TMenuItem;
     Sair2: TMenuItem;
-    btnEditar: TPanel;
+    TPanel: TPanel;
     btnImprimir: TButton;
-    Button2: TButton;
-    Button3: TButton;
+    btnSalvar: TButton;
+    btnEditar: TButton;
     StatusBar1: TStatusBar;
     Timer1: TTimer;
     Image1: TImage;
-    procedure FormCreate(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure Produtos1Click(Sender: TObject);
+    procedure Sair1Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    a : string;
   end;
 
 var
@@ -40,11 +45,65 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmPrincipal.FormCreate(Sender: TObject);
-  var x : string;
+uses UfrmCadastroProdutos;
+
+procedure TfrmPrincipal.btnEditarClick(Sender: TObject);
+  var vendas, media : integer;
+  var mensagemboa, mensagemruim : string;
 begin
-   x := 'Bem vindos!';
-   showmessage(x);
+
+vendas := 15;
+media := 10;
+mensagemboa := 'As vendas foram boas';
+mensagemruim := 'As vendas foram ruins';
+
+  if vendas > media then
+    begin
+        showmessage(mensagemboa);
+    end
+  else
+    begin
+        showmessage(mensagemruim);
+    end;
+
+end;
+
+procedure TfrmPrincipal.btnImprimirClick(Sender: TObject);
+begin
+     // botão 'imprimir'
+     a := 'Imprimir';
+     showmessage(a);
+end;
+
+procedure TfrmPrincipal.btnSalvarClick(Sender: TObject);
+  var a : string;
+  var b : integer;
+
+begin
+  a := 'Fora dos Valores';
+  b := 100;
+
+  case b of
+    10 : a := 'Vale 10';
+    50 : a := 'Vale 50';
+    100 : a := 'Vale 100';
+  end;
+    showmessage(a);
+end;
+
+procedure TfrmPrincipal.Produtos1Click(Sender: TObject);
+begin
+  frmCadastroProdutos := TfrmCadastroProdutos.Create(nil);
+  try
+    frmCadastroProdutos.ShowModal;
+  finally
+     FreeAndNil (frmCadastroProdutos);     
+  end;
+end;
+
+procedure TfrmPrincipal.Sair1Click(Sender: TObject);
+begin
+  close;
 end;
 
 end.
